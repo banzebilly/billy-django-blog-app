@@ -47,26 +47,5 @@ Scalable Architecture: Designed to handle increasing volumes of content and user
 Caching and Optimization: Implementation of caching strategies to improve load times and reduce server load.
 Technologies Used:
 
-Django Framework: The core backend framework, providing a robust and scalable foundation.
-Django Rest Framework (DRF): For building RESTful APIs to support frontend operations and integrations.
-PostgreSQL: As the primary database for handling relational data.
-Redis: For caching and real-time notifications.
-Celery: For handling asynchronous tasks and background processing.
-Bootstrap: To provide a responsive and user-friendly frontend design.
-Docker: To containerize the application for easier deployment and scalability.
-Development Plan:
 
-Phase 1: Project Setup and Basic Functionality
 
-Initialize Django project and set up basic models.
-Implement user authentication (login, registration).
-Develop role-based access control.
-Phase 2: Core Features Development
-
-Implement category management and post creation workflows.
-Develop the dashboard for different roles with corresponding permissions.
-Phase 3: Advanced Features and Optimization
-
-Integrate media management, search, and filtering.
-Implement analytics and notification systems.
-Optimize for performance and scalability.
