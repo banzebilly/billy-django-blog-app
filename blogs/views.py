@@ -39,6 +39,7 @@ def blogs(request, slug):
     # Comments
     comments = Comment.objects.filter(blog=single_blog)
     comment_count = comments.count()
+
     
     context = {
         'single_blog': single_blog,

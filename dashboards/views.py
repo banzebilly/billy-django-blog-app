@@ -13,7 +13,7 @@ def dashboard(request):
     category_count = Category.objects.all().count()
     blogs_count = Blog.objects.all().count()
 
-    context = {
+    context = { 
         'category_count': category_count,
         'blogs_count': blogs_count,
     }
@@ -69,6 +69,7 @@ def add_post(request):
     if request.method == 'POST':
         form = BlogPostForm(request.POST, request.FILES)
         if form.is_valid():
+            
             post = form.save(commit=False) # temporarily saving the form
             post.author = request.user
             post.save()

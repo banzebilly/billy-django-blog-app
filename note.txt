@@ -1,0 +1,59 @@
+building a blog app for demonstration
+
+==============how can we define the model class for a blog all=============
+=======first need category class
+
+class Category(model.MOdel):
+   blog_category_name = model.CharField(max_length=50, unique=True)
+
+   create_at = model.DateTileField(auto_add_now=True)
+   updated_at = model.DateTileField(auto_add=True)
+
+   def __str__(self):
+       return self.blog_category_name
+
+
+=========creating a turple choice in order to state the featured image===
+
+STATUS_CHOICES = (
+    ("Draft": "Draft"),
+    ("Published": "Published")
+)
+
+ class Blog(model.MOdel):
+   title = model.CharField(max_length=100)
+   slug = model.SlugField(max_length=150, unique=True, blank=True)
+   category = model.ForeignKey(Category, on_delete=model.CASCADE)  
+   author = model.ForeignKey(User, on_delete=models.CASCADE)
+   featured_image = model.ImageField(upload_to="upload/%Y %m %d")
+   short_description = model.CharField(max_length=400)
+   blog_body = model.CharField(max_length=2000)
+   status = model.CharField(max_length=20, choice = STATUS_CHOICES, default="Draft")   
+   is_featured = model.BooleanField(default=False)
+   create_at = model.DateTileField(auto_add_now=True)
+   updated_at = model.DateTileField(auto_add=True)
+
+
+   def __str__(self):
+      return self.title
+
+
+
+================how to haddle comment post in the blog=post==========
+-------first create a comment classs-------------
+
+class Comment(model.Model):
+   user = model.ForeignKey(User, on_delete=models.CASCADE)
+   blog = model.ForeignKey(Blog, on_delete=models.CASCADE)
+   comment = model.CharField(max_length=100)
+   create_at = model.DateTileField(auto_add_now=True)
+   updated_at = model.DateTileField(auto_add=True)
+
+
+   def __st__(self):
+      return self.comment
+-------------making the admin panel look good-------------
+
+class BlogAdmin(admin.ModelAdmin):
+    ---------we need to prepopulate the string while typing
+    prepopulated_fields = {"slug": (title,)}
